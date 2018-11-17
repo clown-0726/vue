@@ -9,4 +9,17 @@ import platformModules from 'web/runtime/modules/index'
 // built-in modules have been applied.
 const modules = platformModules.concat(baseModules)
 
+
+/**
+[TITLE]
+new Vue()发生了什么？
+[CONTENT]
+说这里使用了curry化的技巧，没太听懂
+node-ops 定了对实际dom操作到方法
+
+[NEXT]
+createPatchFunction 做了什么？
+Refer file: core/vdom/patch
+
+*/
 export const patch: Function = createPatchFunction({ nodeOps, modules })

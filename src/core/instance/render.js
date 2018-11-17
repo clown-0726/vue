@@ -58,6 +58,41 @@ export function renderMixin (Vue: Class<Component>) {
     return nextTick(fn, this)
   }
 
+  /**
+  [TITLE]
+  new Vue()发生了什么？
+  [CONTENT]
+  render方法返回的是一个vnode对象
+  其核心代码是 vnode = render.call(vm._renderProxy, vm.$createElement)
+  其定义也是在当前文件中，下面是截取的一部分代码，从注释上看，我们知道
+  一个是给代码生成的render函数用的，
+  另一个是给自己手写的render函数用的
+  render: function (createElement) {
+  return createElement('div', {
+    attrs: {
+        id: 'app'
+      },
+    }, this.message)
+  }
+  也就是上面这种写法
+
+
+  // internal version is used by render functions compiled from templates
+  vm._c = (a, b, c, d) => createElement(vm, a, b, c, d, false)
+  // normalization is always applied for the public version, used in
+  // user-written render functions.
+  vm.$createElement = (a, b, c, d) => createElement(vm, a, b, c, d, true)
+
+  vm._renderProxy 这个其实就是绑定一个es6语法中的proxy方法，其作用是对对象的访问做劫持
+  vm._renderProxy 在生产环境下就是vm
+
+  [NEXT]
+  vm._renderProxy 做了什么？
+  Refer file: core/instance/proxy.js
+
+  vnode = render.call(vm._renderProxy, vm.$createElement) 中 vm.$createElement 做了什么？
+  Refer file: core/vdom/create-element.js
+  */
   Vue.prototype._render = function (): VNode {
     const vm: Component = this
     const { render, _parentVnode } = vm.$options

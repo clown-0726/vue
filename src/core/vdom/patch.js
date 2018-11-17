@@ -689,6 +689,7 @@ export function createPatchFunction (backend) {
     }
   }
 
+  // CROWN: createPatchFunction 实际上是调用的这个方法
   return function patch (oldVnode, vnode, hydrating, removeOnly) {
     if (isUndef(vnode)) {
       if (isDef(oldVnode)) invokeDestroyHook(oldVnode)
@@ -739,6 +740,7 @@ export function createPatchFunction (backend) {
         const oldElm = oldVnode.elm
         const parentElm = nodeOps.parentNode(oldElm)
 
+        // CROWN:  这个函数就是将vnode挂载到真实到DOM上
         // create new node
         createElm(
           vnode,

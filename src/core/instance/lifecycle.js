@@ -48,6 +48,7 @@ export function initLifecycle (vm: Component) {
 }
 
 export function lifecycleMixin (Vue: Class<Component>) {
+
   Vue.prototype._update = function (vnode: VNode, hydrating?: boolean) {
     const vm: Component = this
     const prevEl = vm.$el
@@ -131,6 +132,29 @@ export function lifecycleMixin (Vue: Class<Component>) {
   }
 }
 
+/**
+[TITLE]
+new Vue()发生了什么？
+[CONTENT]
+这个方法的核心方法其实就是最后面的 vm._update(vm._render(), hydrating) 方法
+这个时候已经拿到了render函数
+vm._render()是生成vnode
+vm._update()则是渲染到DOM，其实是调用了vm.__patch__方法
+hydrating是服务器渲染的开关
+
+mountComponent是一个渲染Watcher，观察者模式
+当以后数据变化之后，也需要触发执行这个方法重新渲染，因此是一个渲染Wather
+
+[NEXT]
+vm._render() 做了什么？
+Refer file: core/instance/render.js
+
+vm._update() 做了什么？
+Refer file: core/platforms/index.js
+
+渲染Watcher 做了什么？
+Refer file: core/observer/watcher.js
+*/
 export function mountComponent (
   vm: Component,
   el: ?Element,

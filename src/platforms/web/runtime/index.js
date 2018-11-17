@@ -30,9 +30,30 @@ Vue.config.isUnknownElement = isUnknownElement
 extend(Vue.options.directives, platformDirectives)
 extend(Vue.options.components, platformComponents)
 
+/**
+[TITLE]
+new Vue()发生了什么？
+[CONTENT]
+直接到core/platforms/patch.js看其定义
+
+[NEXT]
+patch 做了什么？
+Refer file: core/platforms/patch.js
+
+*/
 // install platform patch function
 Vue.prototype.__patch__ = inBrowser ? patch : noop
 
+/**
+[TITLE]
+new Vue()发生了什么？
+[CONTENT]
+这个方法弃之在经过简短的判断之后，直接调用了mountComponent()这个方法
+
+[NEXT]
+return mountComponent(this, el, hydrating) 做了什么？
+Refer file: core/instance/lifecycle.js
+*/
 // public mount method
 Vue.prototype.$mount = function (
   el?: string | Element,

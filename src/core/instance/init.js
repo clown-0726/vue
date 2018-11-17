@@ -13,6 +13,37 @@ import { extend, mergeOptions, formatComponentName } from '../util/index'
 let uid = 0
 
 export function initMixin (Vue: Class<Component>) {
+  /**
+  [TITLE]
+  new Vue()发生了什么？
+  [CONTENT]
+
+  当执行到这个方法的时候，有以下几个部分需要值得注意：
+  initLifecycle(vm)
+  initEvents(vm)
+  initRender(vm)
+  callHook(vm, 'beforeCreate')
+  initInjections(vm) // resolve injections before data/props
+  initState(vm)
+  initProvide(vm) // resolve provide after data/props
+  callHook(vm, 'created')
+
+  上面这些方法对新创建的vue实例进行了一系列的初始化操作，比如绑定生命周期函数，绑定对象属性等等。
+
+  当执行完上面这些初始化方法之后。
+
+  则进行下面的mount操作，真正将实例绑定到DOM上
+  if (vm.$options.el) {
+    vm.$mount(vm.$options.el)
+  }
+
+  [NEXT]
+  initState(vm) 到底是如何绑定option中对象的属性的。
+  Refer file: core/instance/state.js
+
+  vm.$mount(vm.$options.el) 里面做了什么
+  Refer file: platforms/web/entry-runtime-with-compiler.js
+  */
   Vue.prototype._init = function (options?: Object) {
     const vm: Component = this
     // a uid

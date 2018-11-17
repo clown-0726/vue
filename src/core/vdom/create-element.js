@@ -23,6 +23,16 @@ import {
 const SIMPLE_NORMALIZE = 1
 const ALWAYS_NORMALIZE = 2
 
+/**
+[TITLE]
+new Vue()发生了什么？
+[CONTENT]
+这里的主要功能就是真实创建vnode
+
+[NEXT]
+
+*/
+
 // wrapper function for providing a more flexible interface
 // without getting yelled at by flow
 export function createElement (
@@ -51,6 +61,7 @@ export function _createElement (
   children?: any,
   normalizationType?: number
 ): VNode | Array<VNode> {
+  // CROWN: 不允许是响应式的
   if (isDef(data) && isDef((data: any).__ob__)) {
     process.env.NODE_ENV !== 'production' && warn(
       `Avoid using observed data object as vnode data: ${JSON.stringify(data)}\n` +
@@ -87,6 +98,7 @@ export function _createElement (
     data.scopedSlots = { default: children[0] }
     children.length = 0
   }
+  // CROWN: 这是是将vnode拍平
   if (normalizationType === ALWAYS_NORMALIZE) {
     children = normalizeChildren(children)
   } else if (normalizationType === SIMPLE_NORMALIZE) {

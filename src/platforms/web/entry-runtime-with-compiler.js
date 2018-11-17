@@ -14,14 +14,31 @@ const idToTemplate = cached(id => {
   return el && el.innerHTML
 })
 
+/**
+[TITLE]
+new Vue()发生了什么？
+[CONTENT]
+我们知道，所有的template都会被转化成render函数，从而配合vdom对浏览器进行打patch操作
+
+当执行到return mount.call(this, el, hydrating)的时候，会invoke缓存的mount方法，这个时候
+应该移步到这个方法的定义的地方。
+
+[NEXT]
+return mount.call(this, el, hydrating)做了什么？
+Refer file: platforms/runtime/index.js
+*/
+
 const mount = Vue.prototype.$mount
 Vue.prototype.$mount = function (
   el?: string | Element,
   hydrating?: boolean
 ): Component {
+
+  // CROWN: query 其实就是根据参数返回一个DOM对象
   el = el && query(el)
 
   /* istanbul ignore if */
+  // CROWN:  不能将实例挂在到html或者body上
   if (el === document.body || el === document.documentElement) {
     process.env.NODE_ENV !== 'production' && warn(
       `Do not mount Vue to <html> or <body> - mount to normal elements instead.`
@@ -31,7 +48,9 @@ Vue.prototype.$mount = function (
 
   const options = this.$options
   // resolve template/el and convert to render function
+  // CROWN: 解析template/el并将其转换成render函数
   if (!options.render) {
+    // CROWN: 根据不同的定义template的方法拿到自定义的template
     let template = options.template
     if (template) {
       if (typeof template === 'string') {
@@ -56,6 +75,9 @@ Vue.prototype.$mount = function (
     } else if (el) {
       template = getOuterHTML(el)
     }
+
+    // CROWN: 当拿到template之后，就要进行template的编译工作了，我们知道，我们自定义的template会编译成
+    // js的函数，并将其交给vdom进行执行，以下代码主要是编译相关。
     if (template) {
       /* istanbul ignore if */
       if (process.env.NODE_ENV !== 'production' && config.performance && mark) {
