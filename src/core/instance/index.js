@@ -13,7 +13,8 @@ new Vue()发生了什么？
 当new Vue()的时候，直接调用this._init()方法
 
 [NEXT]
-core/instance/init.js
+this._init(options) 做了什么？
+Refer file: core/instance/init.js
  */
 function Vue (options) {
   if (process.env.NODE_ENV !== 'production' &&

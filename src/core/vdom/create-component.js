@@ -97,7 +97,19 @@ const componentVNodeHooks = {
 }
 
 const hooksToMerge = Object.keys(componentVNodeHooks)
+/**
+[TITLE]
+createComponent()发生了什么？
+[CONTENT]
+这里主要有三部值得注意：
+1. context.$options._base 其实就是Vue全局对象
+2. 为新的component绑定各种hooks
+3. 最终生成vnode对象
 
+[NEXT]
+做了什么？
+Refer file:
+*/
 export function createComponent (
   Ctor: Class<Component> | Function | Object | void,
   data: ?VNodeData,
@@ -109,6 +121,7 @@ export function createComponent (
     return
   }
 
+  // CROWN: context.$options._base 其实就是Vue全局对象
   const baseCtor = context.$options._base
 
   // plain options object: turn it into a constructor
@@ -183,10 +196,12 @@ export function createComponent (
   }
 
   // install component management hooks onto the placeholder node
+  // CROWN: 为新的component绑定各种hooks
   installComponentHooks(data)
 
   // return a placeholder vnode
   const name = Ctor.options.name || tag
+  // CROWN: 最终生成vnode对象
   const vnode = new VNode(
     `vue-component-${Ctor.cid}${name ? `-${name}` : ''}`,
     data, undefined, undefined, undefined, context,

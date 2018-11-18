@@ -115,6 +115,17 @@ export function _createElement (
         undefined, undefined, context
       )
     } else if ((!data || !data.pre) && isDef(Ctor = resolveAsset(context.$options, 'components', tag))) {
+      /**
+      [TITLE]
+      createComponent()发生了什么？
+      [CONTENT]
+      当内容是原生html节点的时候，会直接生成html节点
+      当时当子元素是component的时候则会调用这个方法生成新的component
+
+      [NEXT]
+      vm._renderProxy 做了什么？
+      Refer file: core/vdom/create-component.js
+      */
       // component
       vnode = createComponent(Ctor, data, context, children, tag)
     } else {
