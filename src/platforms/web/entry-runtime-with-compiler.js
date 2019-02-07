@@ -28,6 +28,7 @@ return mount.call(this, el, hydrating)做了什么？
 Refer file: platforms/runtime/index.js
 */
 
+// 这里将 Vue.prototype.$mount 缓存起来，并重写了 $mount 方法，因为默认 runtime only 版本的是没有这个方法的。
 const mount = Vue.prototype.$mount
 Vue.prototype.$mount = function (
   el?: string | Element,
@@ -47,9 +48,18 @@ Vue.prototype.$mount = function (
   }
 
   const options = this.$options
+
+  // 总结下面做的事情：
+  /**
+  * 1. 如果有render function，则直接使用render fun
+  * 2. 如果没有render function 但是有template，则将 template 中的html 编译成render fun
+  * 3. 如果都没有，则使用 el 选取的 html 片段编译成render fun
+  */
   // resolve template/el and convert to render function
   // CROWN: 解析template/el并将其转换成render函数
+  // 这里判断是否有render方法，umd调用的是没有render方法的，.vue模版的使用方式一般是手写render方法的。
   if (!options.render) {
+    // template 也是根据实际情况有时候会有，有时候会没有的。
     // CROWN: 根据不同的定义template的方法拿到自定义的template
     let template = options.template
     if (template) {
@@ -73,6 +83,7 @@ Vue.prototype.$mount = function (
         return this
       }
     } else if (el) {
+      // 如果是直接绑定的，要先去拿到页面的真实 html，因为要去拿这些html去生成虚拟dom
       template = getOuterHTML(el)
     }
 

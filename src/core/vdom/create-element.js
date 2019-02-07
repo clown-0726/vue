@@ -43,6 +43,7 @@ export function createElement (
   normalizationType: any,
   alwaysNormalize: boolean
 ): VNode | Array<VNode> {
+  // 参数重载，这个满足说明 data 参数是没有的
   if (Array.isArray(data) || isPrimitive(data)) {
     normalizationType = children
     children = data
@@ -51,6 +52,7 @@ export function createElement (
   if (isTrue(alwaysNormalize)) {
     normalizationType = ALWAYS_NORMALIZE
   }
+  // 实际上调用的 _createElement
   return _createElement(context, tag, data, children, normalizationType)
 }
 
@@ -108,6 +110,7 @@ export function _createElement (
   if (typeof tag === 'string') {
     let Ctor
     ns = (context.$vnode && context.$vnode.ns) || config.getTagNamespace(tag)
+    // html保留标签
     if (config.isReservedTag(tag)) {
       // platform built-in elements
       vnode = new VNode(
@@ -128,6 +131,7 @@ export function _createElement (
       */
       // component
       vnode = createComponent(Ctor, data, context, children, tag)
+      // 一些自定义的不认识的节点
     } else {
       // unknown or unlisted namespaced elements
       // check at runtime because it may get assigned a namespace when its

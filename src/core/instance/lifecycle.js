@@ -185,6 +185,7 @@ export function mountComponent (
 
   let updateComponent
   /* istanbul ignore if */
+  // CROWN: config.performance && mark 是和一些性能买点相关的
   if (process.env.NODE_ENV !== 'production' && config.performance && mark) {
     updateComponent = () => {
       const name = vm._name
@@ -203,6 +204,8 @@ export function mountComponent (
       measure(`vue ${name} patch`, startTag, endTag)
     }
   } else {
+    // 最终定义了这个函数，核心代码，上面是和性能买点相关的。
+    // hydrating ssr相关
     updateComponent = () => {
       vm._update(vm._render(), hydrating)
     }

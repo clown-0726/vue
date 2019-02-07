@@ -123,6 +123,7 @@ function initData (vm: Component) {
     )
   }
   // proxy data on instance
+  // ！！！做循环检查 data 的 key 不能和 option 的 key 重复。
   const keys = Object.keys(data)
   const props = vm.$options.props
   const methods = vm.$options.methods

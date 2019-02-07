@@ -1,0 +1,64 @@
+{
+    "root": {
+        "data": {
+            "id": "brtag5z456g0",
+            "created": 1549529736822,
+            "text": "中心主题"
+        },
+        "children": [
+            {
+                "data": {
+                    "id": "brtaghj9y480",
+                    "created": 1549529761986,
+                    "text": "@src/core/instance/init.js",
+                    "priority": null,
+                    "layout": null
+                },
+                "children": [
+                    {
+                        "data": {
+                            "id": "brtaiguqkao0",
+                            "created": 1549529917231,
+                            "text": "vm.$mount(vm.$options.el)...\n最后调用$mount函数绑定到html元素上",
+                            "layout": null
+                        },
+                        "children": []
+                    },
+                    {
+                        "data": {
+                            "id": "brtaiuqtbs80",
+                            "created": 1549529947468,
+                            "text": "initLifecycle(vm)...\n调用各种初始化函数",
+                            "layout": null
+                        },
+                        "children": []
+                    },
+                    {
+                        "data": {
+                            "id": "brtajhodqf40",
+                            "created": 1549529997387,
+                            "text": "vm.$options = mergeOptions(...\n合并所有的option到$option上"
+                        },
+                        "children": []
+                    }
+                ]
+            },
+            {
+                "data": {
+                    "id": "brtaibbzojs0",
+                    "created": 1549529905213,
+                    "text": "分支主题",
+                    "layout_fish-bone-master_offset": {
+                        "x": 112,
+                        "y": -2
+                    }
+                },
+                "children": []
+            }
+        ]
+    },
+    "template": "fish-bone",
+    "theme": "fresh-soil",
+    "version": "1.4.43",
+    "id": "brtag5z456g0"
+}

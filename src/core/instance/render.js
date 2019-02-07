@@ -95,6 +95,7 @@ export function renderMixin (Vue: Class<Component>) {
   */
   Vue.prototype._render = function (): VNode {
     const vm: Component = this
+    // 从 vm.$options 拿到render函数，核心代码🐷🐷🐷
     const { render, _parentVnode } = vm.$options
 
     // reset _rendered flag on slots for duplicate slot check
@@ -115,6 +116,8 @@ export function renderMixin (Vue: Class<Component>) {
     // render self
     let vnode
     try {
+      // 核心代码🐷🐷🐷
+      // vm._renderProxy 当前执行上下文，生产环境就是 vm 本身
       vnode = render.call(vm._renderProxy, vm.$createElement)
     } catch (e) {
       handleError(e, vm, `render`)
