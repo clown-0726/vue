@@ -1,0 +1,47 @@
+{
+    "root": {
+        "data": {
+            "id": "brrrcgi2k340",
+            "created": 1549374285235,
+            "text": "package.json/script"
+        },
+        "children": [
+            {
+                "data": {
+                    "id": "brrreakyuhk0",
+                    "created": 1549374429078,
+                    "text": "scripts/config.js",
+                    "layout_fish-bone-master_offset": {
+                        "x": 65,
+                        "y": -22
+                    },
+                    "layout_right_offset": {
+                        "x": 35,
+                        "y": 3
+                    }
+                },
+                "children": []
+            },
+            {
+                "data": {
+                    "id": "brrrg5snecg0",
+                    "created": 1549374575387,
+                    "text": "Goto src/platforms folder then use entry compiling file",
+                    "layout_fish-bone-slave_offset": {
+                        "x": 23,
+                        "y": -22
+                    },
+                    "layout_fish-bone-master_offset": {
+                        "x": 111,
+                        "y": 11
+                    }
+                },
+                "children": []
+            }
+        ]
+    },
+    "template": "fish-bone",
+    "theme": "snow-compact",
+    "version": "1.4.43",
+    "id": "brrrcgi2k340"
+}

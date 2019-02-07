@@ -1,0 +1,135 @@
+{
+    "root": {
+        "data": {
+            "id": "brrrjy7ou0g0",
+            "created": 1549374872338,
+            "text": "VUE"
+        },
+        "children": [
+            {
+                "data": {
+                    "id": "brrrkwwdy6g0",
+                    "created": 1549374947842,
+                    "text": "src/platforms/web/entry-runtime-with-compiler.js",
+                    "layout_fish-bone-master_offset": {
+                        "x": 18,
+                        "y": -2
+                    }
+                },
+                "children": [
+                    {
+                        "data": {
+                            "id": "brrrn8r580g0",
+                            "created": 1549375130375,
+                            "text": "绑上Vue.prototype.$mount原型方法"
+                        },
+                        "children": []
+                    }
+                ]
+            },
+            {
+                "data": {
+                    "id": "brrrltuqn7s0",
+                    "created": 1549375019577,
+                    "text": "./runtime/index",
+                    "layout_fish-bone-master_offset": {
+                        "x": 74,
+                        "y": -4
+                    }
+                },
+                "children": [
+                    {
+                        "data": {
+                            "id": "brrrpqb2a9c0",
+                            "created": 1549375325313,
+                            "text": "// install platform specific utils一些静态的全局配置"
+                        },
+                        "children": []
+                    },
+                    {
+                        "data": {
+                            "id": "brrrpz8jbqg0",
+                            "created": 1549375344751,
+                            "text": "Vue.prototype.__patch__"
+                        },
+                        "children": []
+                    }
+                ]
+            },
+            {
+                "data": {
+                    "id": "brrrqdmur400",
+                    "created": 1549375376092,
+                    "text": "core/index"
+                },
+                "children": [
+                    {
+                        "data": {
+                            "id": "brrrqwtk9sg0",
+                            "created": 1549375417857,
+                            "text": "initGlobalAPI(Vue)初始化一些“静态”全局api"
+                        },
+                        "children": []
+                    }
+                ]
+            },
+            {
+                "data": {
+                    "id": "brrrrd8wcu00",
+                    "created": 1549375453612,
+                    "text": "./instance/index",
+                    "layout_fish-bone-master_offset": {
+                        "x": 173,
+                        "y": 25
+                    }
+                },
+                "children": [
+                    {
+                        "data": {
+                            "id": "brrrsk8h0n40",
+                            "created": 1549375547188,
+                            "text": "initMixin(Vue) 原型方法混入"
+                        },
+                        "children": []
+                    },
+                    {
+                        "data": {
+                            "id": "brrrsoyp4js0",
+                            "created": 1549375557481,
+                            "text": "stateMixin(Vue) 原型方法混入"
+                        },
+                        "children": []
+                    },
+                    {
+                        "data": {
+                            "id": "brrrsq8qjmo0",
+                            "created": 1549375560265,
+                            "text": "eventsMixin(Vue) 原型方法混入"
+                        },
+                        "children": []
+                    },
+                    {
+                        "data": {
+                            "id": "brrrsrc4pww0",
+                            "created": 1549375562647,
+                            "text": "lifecycleMixin(Vue) 原型方法混入"
+                        },
+                        "children": []
+                    },
+                    {
+                        "data": {
+                            "id": "brrrtddmjpc0",
+                            "created": 1549375610627,
+                            "text": "renderMixin(Vue) 原型方法混入"
+                        },
+                        "children": []
+                    }
+                ]
+            }
+        ]
+    },
+    "template": "fish-bone",
+    "theme": "snow",
+    "version": "1.4.43",
+    "id": "brrrjy7ou0g0"
+}

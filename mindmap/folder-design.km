@@ -1,0 +1,138 @@
+{
+    "root": {
+        "data": {
+            "id": "brrlj1k8uds0",
+            "created": 1549357874604,
+            "text": "src"
+        },
+        "children": [
+            {
+                "data": {
+                    "id": "brrlk8xx6jc0",
+                    "created": 1549357969033,
+                    "text": "compiler"
+                },
+                "children": [
+                    {
+                        "data": {
+                            "id": "brrlknxa2k00",
+                            "created": 1549358001646,
+                            "text": "vue template to render function"
+                        },
+                        "children": []
+                    }
+                ]
+            },
+            {
+                "data": {
+                    "id": "brrll58jix40",
+                    "created": 1549358039332,
+                    "text": "core"
+                },
+                "children": [
+                    {
+                        "data": {
+                            "id": "brrllgqq1e80",
+                            "created": 1549358064376,
+                            "text": "observer",
+                            "layout_right_offset": {
+                                "x": 61,
+                                "y": -5
+                            }
+                        },
+                        "children": [
+                            {
+                                "data": {
+                                    "id": "brrllkd7avk0",
+                                    "created": 1549358072266,
+                                    "text": "和响应式数据相关"
+                                },
+                                "children": []
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "data": {
+                    "id": "brrlltyofds0",
+                    "created": 1549358093155,
+                    "text": "platforms"
+                },
+                "children": [
+                    {
+                        "data": {
+                            "id": "brrlmptcn7k0",
+                            "created": 1549358162490,
+                            "text": "web"
+                        },
+                        "children": []
+                    },
+                    {
+                        "data": {
+                            "id": "brrlmqvddfs0",
+                            "created": 1549358164789,
+                            "text": "weex: 手机端"
+                        },
+                        "children": []
+                    }
+                ]
+            },
+            {
+                "data": {
+                    "id": "brrlnv0rf280",
+                    "created": 1549358252186,
+                    "text": "server"
+                },
+                "children": [
+                    {
+                        "data": {
+                            "id": "brrlnxvyn1s0",
+                            "created": 1549358258426,
+                            "text": "ssr相关"
+                        },
+                        "children": []
+                    }
+                ]
+            },
+            {
+                "data": {
+                    "id": "brrlo1soz4w0",
+                    "created": 1549358266936,
+                    "text": "sfc"
+                },
+                "children": [
+                    {
+                        "data": {
+                            "id": "brrlog39co00",
+                            "created": 1549358298050,
+                            "text": "一个解释器，将.vue文件变成一个js对象"
+                        },
+                        "children": []
+                    }
+                ]
+            },
+            {
+                "data": {
+                    "id": "brrlovf2gig0",
+                    "created": 1549358331416,
+                    "text": "shared"
+                },
+                "children": [
+                    {
+                        "data": {
+                            "id": "brrlozcmit40",
+                            "created": 1549358339975,
+                            "text": "一些辅助方法或对象"
+                        },
+                        "children": []
+                    }
+                ]
+            }
+        ]
+    },
+    "template": "right",
+    "theme": "fresh-blue-compat",
+    "version": "1.4.43",
+    "id": "brrlj1k8uds0"
+}
