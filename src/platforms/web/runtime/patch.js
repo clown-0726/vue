@@ -22,4 +22,6 @@ createPatchFunction 做了什么？
 Refer file: core/vdom/patch
 
 */
+// nodeOps 是一些真实 dom 的操作
+
 export const patch: Function = createPatchFunction({ nodeOps, modules })
