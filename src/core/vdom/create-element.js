@@ -141,6 +141,7 @@ export function _createElement (
         undefined, undefined, context
       )
     }
+    // 如果不是原生标签的话，则表示传入的标签，要去调用createComponent这个方法
   } else {
     // direct component options / constructor
     vnode = createComponent(tag, data, context, children)

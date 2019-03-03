@@ -113,7 +113,7 @@ Refer file:
 export function createComponent (
   Ctor: Class<Component> | Function | Object | void,
   data: ?VNodeData,
-  context: Component,
+  context: Component, // 当前的vm实例
   children: ?Array<VNode>,
   tag?: string
 ): VNode | Array<VNode> | void {
@@ -204,8 +204,8 @@ export function createComponent (
   // CROWN: 最终生成vnode对象
   const vnode = new VNode(
     `vue-component-${Ctor.cid}${name ? `-${name}` : ''}`,
-    data, undefined, undefined, undefined, context,
-    { Ctor, propsData, listeners, tag, children },
+    data, undefined, undefined, undefined, context, // 组件的 children， text， elm是空
+    { Ctor, propsData, listeners, tag, children }, // 组件特有的，虽然上面三个是空 componentOptions
     asyncFactory
   )
 
@@ -238,6 +238,7 @@ export function createComponentInstanceForVnode (
   return new vnode.componentOptions.Ctor(options)
 }
 
+// merge hook
 function installComponentHooks (data: VNodeData) {
   const hooks = data.hook || (data.hook = {})
   for (let i = 0; i < hooksToMerge.length; i++) {

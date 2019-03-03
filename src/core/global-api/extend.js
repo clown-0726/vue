@@ -18,7 +18,7 @@ export function initExtend (Vue: GlobalAPI) {
    */
   Vue.extend = function (extendOptions: Object): Function {
     extendOptions = extendOptions || {}
-    const Super = this
+    const Super = this // Super 为 Vue 对象
     const SuperId = Super.cid
     const cachedCtors = extendOptions._Ctor || (extendOptions._Ctor = {})
     if (cachedCtors[SuperId]) {
@@ -26,22 +26,26 @@ export function initExtend (Vue: GlobalAPI) {
     }
 
     const name = extendOptions.name || Super.options.name
+    // 对组件先进行一次校验，看看组件是否合法
     if (process.env.NODE_ENV !== 'production' && name) {
       validateComponentName(name)
     }
 
+    // 定义了一个子的构造函数
     const Sub = function VueComponent (options) {
       this._init(options)
     }
     Sub.prototype = Object.create(Super.prototype)
     Sub.prototype.constructor = Sub
     Sub.cid = cid++
+    // 当前组件的options和Vue的options进行了一次合并
     Sub.options = mergeOptions(
       Super.options,
       extendOptions
     )
     Sub['super'] = Super
 
+    // 下面是将大Vue的一些能力赋值给组件，使得组件具备一些大Vue的能力，作为一些优化手段出现的
     // For props and computed properties, we define the proxy getters on
     // the Vue instances at extension time, on the extended prototype. This
     // avoids Object.defineProperty calls for each instance created.
