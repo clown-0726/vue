@@ -37,11 +37,23 @@ const sharedPropertyDefinition = {
 
 export function proxy (target: Object, sourceKey: string, key: string) {
   sharedPropertyDefinition.get = function proxyGetter () {
-    return this[sourceKey][key]
+    return this[sourceKey][key] // vm._data.key
   }
   sharedPropertyDefinition.set = function proxySetter (val) {
     this[sourceKey][key] = val
   }
+
+  /* Write by Crown
+  sharedPropertyDefinition = {
+    get: function proxyGetter () {
+      return this[sourceKey][key]
+    },
+    set: function proxySetter (val) {
+      this[sourceKey][key] = val
+    }
+  }
+  */
+
   Object.defineProperty(target, key, sharedPropertyDefinition)
 }
 
@@ -145,10 +157,12 @@ function initData (vm: Component) {
         vm
       )
     } else if (!isReserved(key)) {
+      // 核心代理方法，为什么定义的data能直接通过this调用。
       proxy(vm, `_data`, key)
     }
   }
   // observe data
+  // 对数据做响应式处理
   observe(data, true /* asRootData */)
 }
 

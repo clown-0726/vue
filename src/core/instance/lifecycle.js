@@ -204,8 +204,9 @@ export function mountComponent (
       measure(`vue ${name} patch`, startTag, endTag)
     }
   } else {
-    // 最终定义了这个函数，核心代码，上面是和性能买点相关的。
+    // 最终定义了这个函数，核心代码，上面是和性能埋点相关的。
     // hydrating ssr相关
+    // vm._render() 最终得到vnode
     updateComponent = () => {
       vm._update(vm._render(), hydrating)
     }
