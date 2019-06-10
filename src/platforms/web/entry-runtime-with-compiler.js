@@ -89,6 +89,7 @@ Vue.prototype.$mount = function (
 
     // CROWN: 当拿到template之后，就要进行template的编译工作了，我们知道，我们自定义的template会编译成
     // js的函数，并将其交给vdom进行执行，以下代码主要是编译相关。
+    // 这部分就是先编译成AST树，再进而得到render函数
     if (template) {
       /* istanbul ignore if */
       if (process.env.NODE_ENV !== 'production' && config.performance && mark) {
