@@ -30,6 +30,7 @@ export function initLifecycle (vm: Component) {
     while (parent.$options.abstract && parent.$parent) {
       parent = parent.$parent
     }
+    // 拿到父的vm实例之后，将当前的vm实例push到父vm实例中，从而尽力父子关系
     parent.$children.push(vm)
   }
 
@@ -206,7 +207,7 @@ export function mountComponent (
   } else {
     // 最终定义了这个函数，核心代码，上面是和性能埋点相关的。
     // hydrating ssr相关
-    // vm._render() 最终得到vnode
+    // vm._render() 最终得到vnode refer to "src/core/instance/render.js"
     updateComponent = () => {
       vm._update(vm._render(), hydrating)
     }

@@ -31,12 +31,15 @@ export function initExtend (Vue: GlobalAPI) {
       validateComponentName(name)
     }
 
-    // 定义了一个子的构造函数
+    // 定义了一个子的构造函数，这里就是利用了原型继承的方法做的继承 VVVVVVVVVVV
+    // 定义这个子构造方法，其实就是为了初始化子component用的
     const Sub = function VueComponent (options) {
       this._init(options)
     }
     Sub.prototype = Object.create(Super.prototype)
     Sub.prototype.constructor = Sub
+    // 定义了一个子的构造函数，这里就是利用了原型继承的方法做的继承 ^^^^^^^^^^^^
+
     Sub.cid = cid++
     // 当前组件的options和Vue的options进行了一次合并
     Sub.options = mergeOptions(
