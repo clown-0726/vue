@@ -187,7 +187,11 @@ export function defineReactive (
       } else {
         val = newVal
       }
+      // 当数据更新的时候，我们不能保证数据更新的类型和当前一样，也会会是一个全新的对象
+      // 因此，我们需要把全新的值进行观测起来，也就对新的值进行依赖收集
       childOb = !shallow && observe(newVal)
+      // 我们知道dep是数据和反应当前数据变化的watchers的桥梁
+      // 当数据变化的时候，这时候就去通知watcher进行update，从而触发页面重新渲染
       dep.notify()
     }
   })

@@ -189,6 +189,7 @@ function initComputed (vm: Component, computed: Object) {
 
   for (const key in computed) {
     const userDef = computed[key]
+    // getter其实就是拿到了当前computed属性的函数方法
     const getter = typeof userDef === 'function' ? userDef : userDef.get
     if (process.env.NODE_ENV !== 'production' && getter == null) {
       warn(
@@ -199,6 +200,7 @@ function initComputed (vm: Component, computed: Object) {
 
     if (!isSSR) {
       // create internal watcher for the computed property.
+      // 为computed属性创建内在的watcher
       watchers[key] = new Watcher(
         vm,
         getter || noop,
@@ -211,6 +213,7 @@ function initComputed (vm: Component, computed: Object) {
     // component prototype. We only need to define computed properties defined
     // at instantiation here.
     if (!(key in vm)) {
+      // 进行defineComputed
       defineComputed(vm, key, userDef)
     } else if (process.env.NODE_ENV !== 'production') {
       if (key in vm.$data) {
@@ -229,6 +232,7 @@ export function defineComputed (
 ) {
   const shouldCache = !isServerRendering()
   if (typeof userDef === 'function') {
+    // 赋予computed属性 get 方法
     sharedPropertyDefinition.get = shouldCache
       ? createComputedGetter(key)
       : userDef
@@ -239,6 +243,8 @@ export function defineComputed (
         ? createComputedGetter(key)
         : userDef.get
       : noop
+    // computed也可以不是函数而是对象，这时候会有set方法，
+    // 但是非常不建议，建议computed是函数，只有get方法即可
     sharedPropertyDefinition.set = userDef.set
       ? userDef.set
       : noop

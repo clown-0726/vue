@@ -103,6 +103,7 @@ export default class Watcher {
     let value
     const vm = this.vm
     try {
+      // 这个getter在渲染的时候就是传递进来的 updateComponent方法，因此再一次触发页面的渲染
       value = this.getter.call(vm, vm)
     } catch (e) {
       if (this.user) {
@@ -178,6 +179,7 @@ export default class Watcher {
    */
   run () {
     if (this.active) {
+      // 求值
       const value = this.get()
       if (
         value !== this.value ||

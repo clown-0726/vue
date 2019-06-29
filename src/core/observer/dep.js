@@ -43,6 +43,7 @@ export default class Dep {
       // order
       subs.sort((a, b) => a.id - b.id)
     }
+    // 触发 watcher list 进行派发更新操作
     for (let i = 0, l = subs.length; i < l; i++) {
       subs[i].update()
     }
