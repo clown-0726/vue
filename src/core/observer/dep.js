@@ -11,6 +11,7 @@ let uid = 0
  * directives subscribing to it.
  */
 export default class Dep {
+  // 全局唯一的静态属性，记录当前的渲染watcher
   static target: ?Watcher;
   id: number;
   subs: Array<Watcher>;
@@ -43,7 +44,6 @@ export default class Dep {
       // order
       subs.sort((a, b) => a.id - b.id)
     }
-    // 触发 watcher list 进行派发更新操作
     for (let i = 0, l = subs.length; i < l; i++) {
       subs[i].update()
     }

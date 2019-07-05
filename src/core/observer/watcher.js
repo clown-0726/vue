@@ -90,6 +90,7 @@ export default class Watcher {
         )
       }
     }
+    // case：比如第一次new VUE()的时候会调用这个方法
     this.value = this.lazy
       ? undefined
       : this.get()
@@ -99,10 +100,12 @@ export default class Watcher {
    * Evaluate the getter, and re-collect dependencies.
    */
   get () {
+    // 这里就是把当前watcher赋值给dep.target
     pushTarget(this)
     let value
     const vm = this.vm
     try {
+      // 这句话就是能启动render函数的渲染
       // 这个getter在渲染的时候就是传递进来的 updateComponent方法，因此再一次触发页面的渲染
       value = this.getter.call(vm, vm)
     } catch (e) {

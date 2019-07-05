@@ -139,6 +139,11 @@ export function defineReactive (
   customSetter?: ?Function,
   shallow?: boolean
 ) {
+  // 很明显是一个被订阅者
+  // 每一个属性当变成响应式对象的时候，当这个对象属性变化的时候，需要触发一系列的Watcher去更新视图
+  // 这个Dep就是用来收集这些Watcher的，当render函数第一次触发的时候，get属性随之触发，其相应的Watcher会被收集起来，这就是依赖收集
+  // 当这个属性发生变化的时候，dep会通知这些watcher 去更新视图，这就是派发更新
+  // 当前属性的Dep是链接当前属性和Watcher的桥梁
   const dep = new Dep()
 
   const property = Object.getOwnPropertyDescriptor(obj, key)
