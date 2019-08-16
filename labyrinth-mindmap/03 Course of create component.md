@@ -2,7 +2,7 @@
 
 注意，`createComponent` 方法 是寄宿在 `src/core/vdom/create-element.js` 中的，也就是说，compiler会将所有的html模版都先编译成render函数，但是生成都render函数中会有一些自定义都标签或者说组件，而当进行生成vnode操作的时候会把这些自定义的组件用`createComponent`进行处理，流程如下：
 
-- 首先，newV VUE 实例，各种初始化操作
+- 首先，new VUE 实例，各种初始化操作
 - 进行各种template/html模版的编译操作，最终生成render函数（注意：render函数中含有的_c等函数就是`createElement`函数）
 - `createComponent` 寄宿在 `createElement` 函数中
 - 生成vnode的时候，当`createElement`不认识的那些，也就是自定义都标签或者说组件，都交给寄宿在内的`createComponent`处理
